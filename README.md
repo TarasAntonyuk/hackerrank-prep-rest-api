@@ -30,7 +30,7 @@ You can test the API endpoints using Postman:
 1. Import the provided Postman collection (`postman_collection.json`) into Postman.
 2. Update the environment variables (e.g., `baseUrl`) if needed.
 3. Send requests to test the functionality.
----
+
 
 ### Postman Collection
 
