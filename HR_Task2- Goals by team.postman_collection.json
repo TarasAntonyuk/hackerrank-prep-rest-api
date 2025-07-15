@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "b3c185ab-669f-464e-9c5c-0e16cd5ccbef",
+		"name": "HR_Task2: Goals by team",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "HR_data",
+			"item": [
+				{
+					"name": "year=2014&team1=Chelsea",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2014&team2=Chelsea&page=3",
+							"protocol": "https",
+							"host": [
+								"jsonmock",
+								"hackerrank",
+								"com"
+							],
+							"path": [
+								"api",
+								"football_matches"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2014"
+								},
+								{
+									"key": "team2",
+									"value": "Chelsea"
+								},
+								{
+									"key": "page",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "year=2011&team1=Barcelona",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2011&team1=Barcelona",
+							"protocol": "https",
+							"host": [
+								"jsonmock",
+								"hackerrank",
+								"com"
+							],
+							"path": [
+								"api",
+								"football_matches"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2011"
+								},
+								{
+									"key": "team1",
+									"value": "Barcelona"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MY_goalsbyteam Tests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>Competition</th>\r",
+							"        <th>Year</th>\r",
+							"        <th>Round</th>\r",
+							"        <th>Team 1</th>\r",
+							"        <th>Team 2</th>\r",
+							"        <th>Team 1 Goals</th>\r",
+							"        <th>Team 2 Goals</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response}}\r",
+							"        <tr>\r",
+							"            <td>{{competition}}</td>\r",
+							"            <td>{{year}}</td>\r",
+							"            <td>{{round}}</td>\r",
+							"            <td>{{team1}}</td>\r",
+							"            <td>{{team2}}</td>\r",
+							"            <td>{{team1goals}}</td>\r",
+							"            <td>{{team2goals}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()};\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"protocolVersion": "http2"
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/goalsbyteam?year=2014&team=Chelsea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"goalsbyteam"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2014"
+						},
+						{
+							"key": "team",
+							"value": "Chelsea"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
