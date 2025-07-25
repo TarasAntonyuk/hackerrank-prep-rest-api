@@ -44,6 +44,21 @@ The Postman collection file is located in the `postman` folder:
 Response:
   39
 
+### Error handling
+
+If `year` or `team` parameter is missing or invalid, the API returns:
+
+- HTTP 400 Bad Request
+- A message indicating the problem
+
+Example:
+
+```http
+GET /goalsbyteam?year=2011
+→ 400 Bad Request
+→ "Missing or empty parameter: team"
+```
+
 
 
 
