@@ -2,11 +2,13 @@ package com.antoniuk.hackerrank_prep.controller;
 
 
 import com.antoniuk.hackerrank_prep.service.FootballMatchService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 
 
 @RestController
@@ -26,13 +28,22 @@ public class FootballMatchController {
     in a given year — as both team1 and team2.
     */
     @GetMapping("/goalsbyteam")
-    public int getGoalsByYearTeam(@RequestParam Integer year,
-                                  @RequestParam String team) {
+    public ResponseEntity<?> getGoalsByYearTeam(@RequestParam(required = false) Integer year,
+                                             @RequestParam(required = false) String team) {
         if (year == null) {
-            throw new IllegalArgumentException("Year - parameter is required");
+            return ResponseEntity.badRequest().body("Missing required parameter: year");
         }
 
-        return matchService.getGoalsByYearTeam(year, team);
+        if (year < 1900 || year > LocalDate.now().getYear()) {
+            return ResponseEntity.badRequest().body("Invalid year value: " + year);
+        }
+
+        if (team == null) {
+            return ResponseEntity.badRequest().body("Missing required parameter: team");
+        }
+
+        return ResponseEntity.ok(matchService.getGoalsByYearTeam(year, team));
+
     }
 
 
