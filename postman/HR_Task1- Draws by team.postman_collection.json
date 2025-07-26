@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "7cdeca56-800f-4378-948e-65e345129bc1",
+		"name": "HR_Task1: Draws by team",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "MainTest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/draws?year=2011",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"draws"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2011"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MainTest Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/draws?year=2014",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"draws"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2014"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HR_data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2011&team1goals=4&team2goals=4",
+					"protocol": "https",
+					"host": [
+						"jsonmock",
+						"hackerrank",
+						"com"
+					],
+					"path": [
+						"api",
+						"football_matches"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2011"
+						},
+						{
+							"key": "team1goals",
+							"value": "4"
+						},
+						{
+							"key": "team2goals",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
