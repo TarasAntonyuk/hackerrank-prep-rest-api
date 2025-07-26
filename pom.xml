@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.antoniuk</groupId>
-	<artifactId>hackerrank-prep-task2</artifactId>
+	<artifactId>hackerrank-prep-rest-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>hackerrank-prep-task2</name>
-	<description>Solution task#2 from HackerRank REST API certification</description>
+	<name>hackerrank-prep-rest-api</name>
+	<description>HackerRank problem solving for REST API certification</description>
 	<url/>
 	<licenses>
 		<license/>
