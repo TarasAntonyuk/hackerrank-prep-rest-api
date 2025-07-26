@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.time.LocalDate;
 
 
@@ -20,8 +19,22 @@ public class FootballMatchController {
         this.matchService = matchService;
     }
 
+    /** 1. Draw Matches in a Given Year
+    Count the number of matches in a given year where the scores were equal
+    (i.e., team1goals == team2goals).
+    */
+    @GetMapping("/draws")
+    public ResponseEntity<?> getDrawMatchesCountNew(@RequestParam(required = false) Integer year) {
 
+        if (year == null) {
+            return ResponseEntity.badRequest().body("Missing required parameter: year");
+        }
 
+        if (year < 1900 || year > LocalDate.now().getYear()) {
+            return ResponseEntity.badRequest().body("Invalid year value: " + year);
+        }
+        return ResponseEntity.ok(matchService.countDrawsMatches(year))                ;
+    }
 
     /** 2. Total Goals by a Team in a Year
     Calculate the total number of goals scored by a team

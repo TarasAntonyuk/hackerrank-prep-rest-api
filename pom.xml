@@ -12,7 +12,7 @@
 	<artifactId>hackerrank-prep-rest-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>hackerrank-prep-rest-api</name>
-	<description>HackerRank problem solving for REST API certification</description>
+	<description>Solutions for HackerRank REST API Certification (Intermediate) — Java + Spring Boot</description>
 	<url/>
 	<licenses>
 		<license/>

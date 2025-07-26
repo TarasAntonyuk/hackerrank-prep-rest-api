@@ -19,7 +19,27 @@ public class FootballMatchService {
         this.apiClient = apiClient;
     }
 
-    //2. Total Goals by a Team in a Year
+    //PROBLEM 1. Count the number of matches in a given year
+    public int countDrawsMatches(int year) {
+        final int MAX_SCORE = 10;
+
+        int drawCount = 0;
+        try {
+
+            for (int i = 0; i < MAX_SCORE; i++) {
+                JSONObject jsonPage = apiClient.fetchDrawMatchesPageByYear(year, 1, i);
+                drawCount += jsonPage.getInt("total");
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to get data from remote API. " + e.getMessage());
+        }
+
+        return drawCount;
+    }
+    //END PROBLEM 1
+
+    //PROBLEM 2. Total Goals by a Team in a Year
     public int getGoalsByYearTeam(int year, String team){
 
         return getGoalsByYearTeamType(year, team, "team1")
@@ -51,9 +71,6 @@ public class FootballMatchService {
             throw new RuntimeException("Failed to get data from HR " + e);
         }
 
-        //int year, String team, String typeTeam;
-        //System.out.println("year = " + year + ", team = " + team + ", typeTeam = " + typeTeam + ", count = " + count);
-
         return count;
     }
 
@@ -67,6 +84,6 @@ public class FootballMatchService {
         }
         return count;
     }
-
+    //END PROBLEM 2.
 
 }
