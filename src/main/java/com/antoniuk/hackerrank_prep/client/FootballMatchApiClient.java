@@ -44,14 +44,14 @@ public class FootballMatchApiClient {
     //<-END PROBLEM 1
 
     //PROBLEM 2
-    public JSONObject fetchMatchesByYearTeam(int year, String team, String teamType, int page ) throws IOException {
+    public JSONObject fetchMatchesByYearTeam(int year, String team, String typeTeam, int page ) throws IOException {
 
         String stringUrl = BASE_URL +
                 "?year=" +
                 year +
                 "&page=" +
                 page +
-                "&" + teamType + "=" + URLEncoder.encode(team, StandardCharsets.UTF_8);
+                "&" + typeTeam + "=" + URLEncoder.encode(team, StandardCharsets.UTF_8);
 
 
         URL url = new URL(stringUrl);

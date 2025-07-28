@@ -86,4 +86,62 @@ public class FootballMatchService {
     }
     //END PROBLEM 2.
 
+    //PROBLEM 3
+    public int getWinsByTeamYear(int year, String team) {
+
+        return getWinsByTeamYearRole(year, team, "team1")
+                + getWinsByTeamYearRole(year, team, "team2");
+
+    }
+
+    public int getWinsByTeamYearRole(int year, String team, String typeTeam) {
+
+        int winsCount;
+        //get first page
+        try {
+            JSONObject page = apiClient.fetchMatchesByYearTeam(year, team, typeTeam, 1);
+            winsCount = getWinsByPage(page, typeTeam);
+
+            int pages = page.getInt("total_pages");
+
+            for (int i = 2; i <= pages; i++) {
+                page = apiClient.fetchMatchesByYearTeam(year, team, typeTeam, i);
+                winsCount = winsCount + getWinsByPage(page, typeTeam);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to get data from remote API" + e.getMessage());
+        }
+
+        return winsCount;
+
+    }
+
+    int getWinsByPage(JSONObject page, String typeTeam){
+
+        String otherTeam;
+        if (typeTeam.equals("team1")) {
+            otherTeam = "team2";
+        } else {
+            otherTeam = "team1";
+        }
+
+
+        String keyOurTeamGoals  = typeTeam + "goals";
+        String keyOtherTeamGoals  = otherTeam + "goals";
+
+        int winsCount = 0;
+        JSONArray data = page.getJSONArray("data");
+
+        for (int i = 0; i < data.length(); i++) {
+            JSONObject match = data.getJSONObject(i);
+            if (Integer.parseInt(match.getString(keyOurTeamGoals)) >
+                    Integer.parseInt(match.getString(keyOtherTeamGoals))){
+                winsCount++;
+            }
+        }
+        return winsCount;
+    }
+    //END PROBLEM 3
+
 }

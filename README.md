@@ -19,12 +19,16 @@ To solve and document multiple REST API challenges using:
 
 ## ✅ Completed Tasks and Endpoints
 
-| # | Problem Title                   | Status | Endpoint                  		                      |
-|---|---------------------------------|--------|---------------------------------------------------|
-| 1 | Draw Matches in a Given Year	   | ✅ Done | `/api/matches/draws?year=2011`                    |
-| 2 | Total Goals by a Team in a Year | ✅ Done | `/api/matches/goalsbyteam?year=2014&team=Chelsea` |       
-| 3 | Total Wins by a Team in a Year  | 🚧 WIP | `/api/matches/...`                                |
-
+| # | Problem Title                        | Status | Endpoint                  		                      |
+|---|--------------------------------------|--------|---------------------------------------------------|
+| 1 | Draw Matches in a Given Year	        | ✅ Done | `/api/matches/draws?year=2011`                    |
+| 2 | Total Goals by a Team in a Year      | ✅ Done | `/api/matches/goalsbyteam?year=2014&team=Chelsea` |       
+| 3 | Total Wins by a Team in a Year       | ✅ Done | `/api/matches/winsbyteam?year=2014&team=Arsenal`  |
+| 4 | Team with the Most Wins in a Year    | 🚧 WIP | `/api/matches/...`                                |
+| 5 | Highest Scoring Match in a Year      | 🚧 WIP | `/api/matches/...`                                |
+| 6 | Matches with a Specific Scoreline    | 🚧 WIP | `/api/matches/...`                                |
+| 7 | Average Goals per Match by a Team    | 🚧 WIP | `/api/matches/...`                                |
+| 8 | Football Competition – Winners Goals | 🚧 WIP | `/api/matches/...`                                |
 > More endpoints will be added as new tasks are solved.
 
 ---
