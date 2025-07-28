@@ -1,0 +1,330 @@
+{
+	"info": {
+		"_postman_id": "787e7f25-c7b6-4108-ab42-614a0ee7db27",
+		"name": "HR_Task3: Wins by team",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "hr_data",
+			"item": [
+				{
+					"name": "checkBarcelona2011",
+					"item": [
+						{
+							"name": "&team1=Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2011&team1=Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2011"
+										},
+										{
+											"key": "team1",
+											"value": "Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "&team2=Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2011&team2=Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2011"
+										},
+										{
+											"key": "team2",
+											"value": "Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "checkBarcelona2011 Copy",
+					"item": [
+						{
+							"name": "&team1=Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2011&team1=Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2011"
+										},
+										{
+											"key": "team1",
+											"value": "Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "&team2=Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2011&team2=Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2011"
+										},
+										{
+											"key": "team2",
+											"value": "Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "checkArsenal",
+					"item": [
+						{
+							"name": "?year=2014&team1=Arsenal",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2014&team1=Arsenal",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2014"
+										},
+										{
+											"key": "team1",
+											"value": "Arsenal"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "?year=2014&team2=Arsenal",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2011&team2=Arsenal",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2011"
+										},
+										{
+											"key": "team2",
+											"value": "Arsenal"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "common_2011",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonmock.hackerrank.com/api/football_matches",
+							"protocol": "https",
+							"host": [
+								"jsonmock",
+								"hackerrank",
+								"com"
+							],
+							"path": [
+								"api",
+								"football_matches"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chelsea_2014",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/winsbyteam?year=2014&team=Chelsea",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"winsbyteam"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2014"
+						},
+						{
+							"key": "team",
+							"value": "Chelsea"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Barcelona_2011",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/winsbyteam?year=2011&team=Barcelona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"winsbyteam"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2011"
+						},
+						{
+							"key": "team",
+							"value": "Barcelona"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Arsenal_2014",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/winsbyteam?year=2014&team=Arsenal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"winsbyteam"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2014"
+						},
+						{
+							"key": "team",
+							"value": "Arsenal"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
