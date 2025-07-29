@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "af6bea46-a26b-4f80-820e-e31b1765e355",
+		"name": "HR_Task4: Team with the Most Wins in a Year",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "hr_data",
+			"item": [
+				{
+					"name": "Barcelona_2012",
+					"item": [
+						{
+							"name": "?year=2012&team1=FC Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012&team1=FC Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2012"
+										},
+										{
+											"key": "team1",
+											"value": "FC Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "?year=2012&team1=Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012&team1=Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2012"
+										},
+										{
+											"key": "team1",
+											"value": "Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "?year=2012&team2=Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012&team2=Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2012"
+										},
+										{
+											"key": "team2",
+											"value": "Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "?year=2012&team2=FC Barcelona",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012&team2=FC Barcelona",
+									"protocol": "https",
+									"host": [
+										"jsonmock",
+										"hackerrank",
+										"com"
+									],
+									"path": [
+										"api",
+										"football_matches"
+									],
+									"query": [
+										{
+											"key": "year",
+											"value": "2012"
+										},
+										{
+											"key": "team2",
+											"value": "FC Barcelona"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "common_2011",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://jsonmock.hackerrank.com/api/football_matches",
+							"protocol": "https",
+							"host": [
+								"jsonmock",
+								"hackerrank",
+								"com"
+							],
+							"path": [
+								"api",
+								"football_matches"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Barcelona_2012",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/winsbyteam?year=2014&team=Arsenal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"winsbyteam"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2014"
+						},
+						{
+							"key": "team",
+							"value": "Arsenal"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
