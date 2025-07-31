@@ -83,6 +83,24 @@ public class FootballMatchController {
 
     }
 
+    /** 4. Team with the Most Wins in a Year
+     Determine which team won the most matches in a season (year in our case) by aggregating wins for each
+     team and returning the one with the highest count.
+     */
+    @GetMapping("/top-winner")
+    public ResponseEntity<?> getTopWinner(@RequestParam(required = false) Integer year) {
+        if (year == null) {
+            return ResponseEntity.badRequest().body("Missing required parameter: year");
+        }
+
+        if (year < 1900 || year > LocalDate.now().getYear()) {
+            return ResponseEntity.badRequest().body("Invalid year value: " + year);
+        }
+
+        return ResponseEntity.ok(matchService.getTeamMaximumWin(year));
+
+    }
+
 
 
 

@@ -7,13 +7,20 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Service
 public class FootballMatchService {
 
     private final FootballMatchApiClient apiClient;
+
+    private static final Map<String, String> TEAM_ALIASES = Map.of(
+            "FC Barcelona"  , "Barcelona",
+            "Barcelona FC"  , "Barcelona",
+            "Barcelona"     , "Barcelona"
+    );
 
     public FootballMatchService(FootballMatchApiClient apiClient) {
         this.apiClient = apiClient;
@@ -143,5 +150,64 @@ public class FootballMatchService {
         return winsCount;
     }
     //END PROBLEM 3
+
+    //PROBLEM 4
+    public String getTeamMaximumWin(int year) {
+
+        Map<String, Integer> map = new HashMap<>();
+
+        try {
+            JSONObject page = apiClient.fetchMatchesByYear(year, 1);
+            int pages = page.getInt("total_pages");
+            addWins(page, map);
+
+            for (int i = 2; i <= pages ; i++) {
+                page = apiClient.fetchMatchesByYear(year, i);
+                addWins(page, map);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to get data from remote API. " + e.getMessage());
+        }
+
+        int maxValue = Integer.MIN_VALUE;
+        String maxKey = "";
+
+        for (Map.Entry<String, Integer> element : map.entrySet()){
+            if (element.getValue() > maxValue){
+                maxValue = element.getValue();
+                maxKey = element.getKey();
+            }
+        }
+        return "Team : " + maxKey + " with wins : " + maxValue;
+    }
+
+    void addWins(JSONObject page, Map<String, Integer> map){
+        JSONArray data = page.getJSONArray("data");
+
+        for (int i = 0; i < data.length(); i++) {
+
+
+            JSONObject match = data.getJSONObject(i);
+
+            int team1goals = Integer.parseInt(match.getString("team1goals"));
+            int team2goals = Integer.parseInt(match.getString("team2goals"));
+
+            if (team1goals==team2goals) continue;
+
+            String winner = (team1goals > team2goals) ? match.getString("team1"):match.getString("team2");
+
+
+            String normWinner = normalizeTeamName(winner);
+            map.put(normWinner, map.getOrDefault(normWinner, 0) + 1);
+
+        }
+
+    }
+
+    private String normalizeTeamName(String teamName) {
+        return TEAM_ALIASES.getOrDefault(teamName, teamName);
+    }
+    //END PROBLEM 4
 
 }

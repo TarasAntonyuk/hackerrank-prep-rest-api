@@ -69,4 +69,29 @@ public class FootballMatchApiClient {
     }
     //<-END PROBLEM 2
 
+    //PROBLEM 4
+    public JSONObject fetchMatchesByYear(int year, int page ) throws IOException {
+
+        String stringUrl = BASE_URL +
+                "?year=" +
+                year +
+                "&page=" +
+                page;
+
+
+        URL url = new URL(stringUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(conn.getInputStream())
+        );
+
+        String responseBody = in.lines().collect(Collectors.joining());
+
+        return new JSONObject(responseBody);
+
+    }
+    //<-END PROBLEM 2
+
 }
