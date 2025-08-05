@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "17ddb355-bb0d-4e4e-9826-f6dd28123323",
+		"name": "HR_Task5: Match with the Most Goals in a Year",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "HR_data_common_2012",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012",
+					"protocol": "https",
+					"host": [
+						"jsonmock",
+						"hackerrank",
+						"com"
+					],
+					"path": [
+						"api",
+						"football_matches"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2012",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/highest-scoring?year=2012",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"highest-scoring"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
