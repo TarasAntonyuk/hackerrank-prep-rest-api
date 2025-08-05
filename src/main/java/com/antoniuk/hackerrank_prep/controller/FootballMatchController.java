@@ -98,17 +98,24 @@ public class FootballMatchController {
         }
 
         return ResponseEntity.ok(matchService.getTeamMaximumWin(year));
-
     }
 
+    /**
+     * 5. Highest Scoring Match in a Year:
+     * Find the match with the highest total goals (i.e., team1goals + team2goals) in a
+     * given year.
 
+     */
+    @GetMapping("/highest-scoring")
+    public ResponseEntity<?> getHighestScoringMatch(@RequestParam(required = false) Integer year) {
+        if (year == null) {
+            return ResponseEntity.badRequest().body("Missing required parameter: year");
+        }
 
+        if (year < 1900 || year > LocalDate.now().getYear()) {
+            return ResponseEntity.badRequest().body("Invalid year value: " + year);
+        }
 
-
-
-
-
-
-
-
+        return ResponseEntity.ok(matchService.getMatchMaxGoals(year));
+    }
 }

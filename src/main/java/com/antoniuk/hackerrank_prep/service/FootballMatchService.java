@@ -205,9 +205,63 @@ public class FootballMatchService {
 
     }
 
-    private String normalizeTeamName(String teamName) {
+    String normalizeTeamName(String teamName) {
         return TEAM_ALIASES.getOrDefault(teamName, teamName);
     }
     //END PROBLEM 4
+
+    /**
+     * 5. Highest Scoring Match in a Year
+     * Find the match with the highest total goals (i.e., team1goals + team2goals) in a
+     * given year.
+     */
+    //PROBLEM 5
+
+    static class ResultHolder {
+        int maxGoals = -1;
+        JSONObject bestMatch = null;
+    }
+
+    public String getMatchMaxGoals(int year){
+
+        ResultHolder res = new ResultHolder();
+
+        try {
+
+            JSONObject page = apiClient.fetchMatchesByYear(year, 1);
+            checkMaxGoals(page, res);
+
+            int pages = page.getInt("total_pages");
+            for (int i = 2; i < pages; i++) {
+                page = apiClient.fetchMatchesByYear(year, i);
+                checkMaxGoals(page, res);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to get data from remote API. " + e.getMessage());
+        }
+
+        return res.bestMatch != null ? res.bestMatch.toString() : null;
+
+    }
+
+    void checkMaxGoals(JSONObject page, ResultHolder res){
+
+        JSONArray matches = page.getJSONArray("data");
+
+        for (int i = 0; i < matches.length(); i++) {
+            JSONObject match = matches.getJSONObject(i);
+
+            int team1goals = Integer.parseInt(match.getString("team1goals"));
+            int team2goals = Integer.parseInt(match.getString("team2goals"));
+
+            if (team1goals + team2goals >= res.maxGoals){
+                res.maxGoals = team1goals + team2goals;
+                res.bestMatch = match;
+            }
+        }
+    }
+
+    //END PROBLEM 5
 
 }

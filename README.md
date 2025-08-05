@@ -25,7 +25,7 @@ To solve and document multiple REST API challenges using:
 | 2 | Total Goals by a Team in a Year                   | ✅ Done | `/api/matches/goalsbyteam?year=2014&team=Chelsea` |       
 | 3 | Total Wins by a Team in a Year                    | ✅ Done | `/api/matches/winsbyteam?year=2014&team=Arsenal`  |
 | 4 | Team with the Most Wins in a Year[¹](#footnote-1) | ✅ Done | `/api/matches/top-winner?year=2012`               |
-| 5 | Highest Scoring Match in a Year                   | 🚧 WIP | `/api/matches/...`                                |
+| 5 | Highest Scoring Match in a Year                   | ✅ Done | `/api/matches/highest-scoring?year=2012`          |
 | 6 | Matches with a Specific Scoreline                 | 🚧 WIP | `/api/matches/...`                                |
 | 7 | Average Goals per Match by a Team                 | 🚧 WIP | `/api/matches/...`                                |
 | 8 | Football Competition – Winners Goals              | 🚧 WIP | `/api/matches/...`                                |
@@ -53,7 +53,7 @@ To solve and document multiple REST API challenges using:
 
 ⬇️ Clone the project:
 ```bash
-git clone https://github.com/TarasAntonyuk/hackerrank-prep-rest-api.git
+git clone https://github.com/TarasAntoniuk/hackerrank-prep-rest-api.git
 cd hackerrank-prep-rest-api
 ```
 
