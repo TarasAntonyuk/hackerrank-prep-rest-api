@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "07c19e20-fc85-4c7c-89ef-58d93c5b519e",
+		"name": "HR_Task7: Average Goals per Match by a Team",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "HR: &page=1&team1=Barcelona",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012&page=1&team1=Barcelona",
+					"protocol": "https",
+					"host": [
+						"jsonmock",
+						"hackerrank",
+						"com"
+					],
+					"path": [
+						"api",
+						"football_matches"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "team1",
+							"value": "Barcelona"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HR: &page=1&team2=Barcelona",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012&page=1&team2=Barcelona",
+					"protocol": "https",
+					"host": [
+						"jsonmock",
+						"hackerrank",
+						"com"
+					],
+					"path": [
+						"api",
+						"football_matches"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "team2",
+							"value": "Barcelona"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "?year=2012&team=Barcelona",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches/average-goals?year=2012&team=Barcelona",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches",
+						"average-goals"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "team",
+							"value": "Barcelona"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

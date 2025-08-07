@@ -92,6 +92,33 @@ public class FootballMatchApiClient {
         return new JSONObject(responseBody);
 
     }
-    //<-END PROBLEM 2
+    //<-END PROBLEM 4
+
+    // PROBLEM 6
+    public JSONObject fetchMatchesByScoreLineYear(int year, int team1goals, int team2goals,int page ) throws IOException {
+
+        String stringUrl = BASE_URL +
+                "?year=" +
+                year +
+                "&page=" +
+                page +
+                "&team1goals="+team1goals +
+                "&team2goals="+team2goals;
+
+
+        URL url = new URL(stringUrl);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(conn.getInputStream())
+        );
+
+        String responseBody = in.lines().collect(Collectors.joining());
+
+        return new JSONObject(responseBody);
+
+    }
+    //<-END PROBLEM 6
 
 }

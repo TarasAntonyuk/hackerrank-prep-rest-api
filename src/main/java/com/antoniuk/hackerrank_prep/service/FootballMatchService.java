@@ -17,9 +17,9 @@ public class FootballMatchService {
     private final FootballMatchApiClient apiClient;
 
     private static final Map<String, String> TEAM_ALIASES = Map.of(
-            "FC Barcelona"  , "Barcelona",
-            "Barcelona FC"  , "Barcelona",
-            "Barcelona"     , "Barcelona"
+            "FC Barcelona", "Barcelona",
+            "Barcelona FC", "Barcelona",
+            "Barcelona", "Barcelona"
     );
 
     public FootballMatchService(FootballMatchApiClient apiClient) {
@@ -47,7 +47,7 @@ public class FootballMatchService {
     //END PROBLEM 1
 
     //PROBLEM 2. Total Goals by a Team in a Year
-    public int getGoalsByYearTeam(int year, String team){
+    public int getGoalsByYearTeam(int year, String team) {
 
         return getGoalsByYearTeamType(year, team, "team1")
                 + getGoalsByYearTeamType(year, team, "team2");
@@ -58,7 +58,7 @@ public class FootballMatchService {
         int totalPages;
 
         String keyGoal;
-        if ( typeTeam.equals("team1")) {
+        if (typeTeam.equals("team1")) {
             keyGoal = "team1goals";
         } else {
             keyGoal = "team2goals";
@@ -81,7 +81,7 @@ public class FootballMatchService {
         return count;
     }
 
-    int getGoalCountByJsonObject(JSONObject json, String keyGoal){
+    int getGoalCountByJsonObject(JSONObject json, String keyGoal) {
         int count = 0;
         JSONArray data = json.getJSONArray("data");
 
@@ -124,7 +124,7 @@ public class FootballMatchService {
 
     }
 
-    int getWinsByPage(JSONObject page, String typeTeam){
+    int getWinsByPage(JSONObject page, String typeTeam) {
 
         String otherTeam;
         if (typeTeam.equals("team1")) {
@@ -134,8 +134,8 @@ public class FootballMatchService {
         }
 
 
-        String keyOurTeamGoals  = typeTeam + "goals";
-        String keyOtherTeamGoals  = otherTeam + "goals";
+        String keyOurTeamGoals = typeTeam + "goals";
+        String keyOtherTeamGoals = otherTeam + "goals";
 
         int winsCount = 0;
         JSONArray data = page.getJSONArray("data");
@@ -143,7 +143,7 @@ public class FootballMatchService {
         for (int i = 0; i < data.length(); i++) {
             JSONObject match = data.getJSONObject(i);
             if (Integer.parseInt(match.getString(keyOurTeamGoals)) >
-                    Integer.parseInt(match.getString(keyOtherTeamGoals))){
+                    Integer.parseInt(match.getString(keyOtherTeamGoals))) {
                 winsCount++;
             }
         }
@@ -161,7 +161,7 @@ public class FootballMatchService {
             int pages = page.getInt("total_pages");
             addWins(page, map);
 
-            for (int i = 2; i <= pages ; i++) {
+            for (int i = 2; i <= pages; i++) {
                 page = apiClient.fetchMatchesByYear(year, i);
                 addWins(page, map);
             }
@@ -173,8 +173,8 @@ public class FootballMatchService {
         int maxValue = Integer.MIN_VALUE;
         String maxKey = "";
 
-        for (Map.Entry<String, Integer> element : map.entrySet()){
-            if (element.getValue() > maxValue){
+        for (Map.Entry<String, Integer> element : map.entrySet()) {
+            if (element.getValue() > maxValue) {
                 maxValue = element.getValue();
                 maxKey = element.getKey();
             }
@@ -182,7 +182,7 @@ public class FootballMatchService {
         return "Team : " + maxKey + " with wins : " + maxValue;
     }
 
-    void addWins(JSONObject page, Map<String, Integer> map){
+    void addWins(JSONObject page, Map<String, Integer> map) {
         JSONArray data = page.getJSONArray("data");
 
         for (int i = 0; i < data.length(); i++) {
@@ -193,9 +193,9 @@ public class FootballMatchService {
             int team1goals = Integer.parseInt(match.getString("team1goals"));
             int team2goals = Integer.parseInt(match.getString("team2goals"));
 
-            if (team1goals==team2goals) continue;
+            if (team1goals == team2goals) continue;
 
-            String winner = (team1goals > team2goals) ? match.getString("team1"):match.getString("team2");
+            String winner = (team1goals > team2goals) ? match.getString("team1") : match.getString("team2");
 
 
             String normWinner = normalizeTeamName(winner);
@@ -222,7 +222,7 @@ public class FootballMatchService {
         JSONObject bestMatch = null;
     }
 
-    public String getMatchMaxGoals(int year){
+    public String getMatchMaxGoals(int year) {
 
         ResultHolder res = new ResultHolder();
 
@@ -245,7 +245,7 @@ public class FootballMatchService {
 
     }
 
-    void checkMaxGoals(JSONObject page, ResultHolder res){
+    void checkMaxGoals(JSONObject page, ResultHolder res) {
 
         JSONArray matches = page.getJSONArray("data");
 
@@ -255,7 +255,7 @@ public class FootballMatchService {
             int team1goals = Integer.parseInt(match.getString("team1goals"));
             int team2goals = Integer.parseInt(match.getString("team2goals"));
 
-            if (team1goals + team2goals >= res.maxGoals){
+            if (team1goals + team2goals >= res.maxGoals) {
                 res.maxGoals = team1goals + team2goals;
                 res.bestMatch = match;
             }
@@ -263,5 +263,82 @@ public class FootballMatchService {
     }
 
     //END PROBLEM 5
+
+    //PROBLEM 6
+
+    /**
+     * 6. Matches with a Specific Scoreline
+     * Count how many matches ended with a specific score, e.g., 3–3, in a given year:
+     * • URL includes team1goals=3&team2goals=3
+     */
+    public int countMatchesByScoreline(int year, int team1goals, int team2goals) {
+
+        int counter;
+        try {
+
+            JSONObject page = apiClient.fetchMatchesByScoreLineYear(year, team1goals, team2goals, 1);
+            counter = page.getInt("total");
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to get data from remote API! " + e.getMessage());
+        }
+
+        return counter;
+    }
+    //END PROBLEM 6
+
+    //PROBLEM 7
+    /**
+     * 7. Average Goals per Match by a Team
+     * Calculate the average number of goals scored per match by a given team in a season.
+     * • Include both team1goals and team2goals
+     * • Divide total goals by number of matches
+     */
+    static class AverageResult{
+        int goals = 0;
+        int matches = 0;
+    }
+
+    public double getAverageGoalsByTeamYear(Integer year, String team){
+
+        AverageResult result = new AverageResult();
+
+        getGoalsMatchesByRole(year, team, "team1", result);
+        getGoalsMatchesByRole(year, team, "team2", result);
+
+        return result.matches == 0 ? 0: (double) result.goals / result.matches;
+
+    }
+
+    void getGoalsMatchesByRole(Integer year, String team, String role, AverageResult result){
+
+        String keyGoal;
+        if (role.equals("team1")) {
+            keyGoal = "team1goals";
+        } else {
+            keyGoal = "team2goals";
+        }
+
+        try {
+            JSONObject page = apiClient.fetchMatchesByYearTeam(year, team, role, 1);
+            int pages = page.getInt("total_pages");
+            result.matches += page.getInt("total");
+            result.goals += getGoalCountByJsonObject(page, keyGoal);
+
+            for (int i = 2; i < pages; i++) {
+                page = apiClient.fetchMatchesByYearTeam(year, team, role, i);
+                result.goals += getGoalCountByJsonObject(page, keyGoal);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to get data from remote API! " + e.getMessage());
+        }
+
+    }
+
+
+
+
+
+
 
 }

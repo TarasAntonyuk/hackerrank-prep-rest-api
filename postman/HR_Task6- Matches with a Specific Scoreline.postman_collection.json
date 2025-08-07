@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "d6d68651-43c4-4b9b-9e5b-08a281bb9021",
+		"name": "HR_Task6: Matches with a Specific Scoreline",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "HR_data_common_2012",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonmock.hackerrank.com/api/football_matches?year=2012&page=1&team1goals=3&team2goals=1",
+					"protocol": "https",
+					"host": [
+						"jsonmock",
+						"hackerrank",
+						"com"
+					],
+					"path": [
+						"api",
+						"football_matches"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "team1goals",
+							"value": "3"
+						},
+						{
+							"key": "team2goals",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2012 3-4",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches?year=2012&page=1&team1goals=3&team2goals=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "team1goals",
+							"value": "3"
+						},
+						{
+							"key": "team2goals",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2012 3-1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/matches?year=2012&page=1&team1goals=3&team2goals=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"matches"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "team1goals",
+							"value": "3"
+						},
+						{
+							"key": "team2goals",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
