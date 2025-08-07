@@ -83,6 +83,7 @@ mvn spring-boot:run
 │   │   │               └── FootballMatchService.java     	# Business logic and task processing
 ...
 ├───postman 	# Postman collections for testing endpoints
+├───docs 	    # Notes and explanations for edge cases and test data quirks
 ├───pom.xml
 └───README.md
 ```
