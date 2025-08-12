@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "bd91a935-9426-4ae2-8e75-abc2ead160e8",
+		"name": "HR_Task8: Football Competition – Winners Goals",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6637928"
+	},
+	"item": [
+		{
+			"name": "HackRank: football_competitions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonmock.hackerrank.com/api/football_competitions?year=2012&name=Bundesliga",
+					"protocol": "https",
+					"host": [
+						"jsonmock",
+						"hackerrank",
+						"com"
+					],
+					"path": [
+						"api",
+						"football_competitions"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "name",
+							"value": "Bundesliga"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HackerRank: football_matches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://jsonmock.hackerrank.com/api/football_matches?competition=Bundesliga&year=2012&team1=Bayern Munchen&page=2",
+					"protocol": "https",
+					"host": [
+						"jsonmock",
+						"hackerrank",
+						"com"
+					],
+					"path": [
+						"api",
+						"football_matches"
+					],
+					"query": [
+						{
+							"key": "competition",
+							"value": "Bundesliga"
+						},
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "team1",
+							"value": "Bayern Munchen"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "?year=2012&competition=Bundesliga",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/competitions/winner/goals?year=2012&competition=Bundesliga",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"competitions",
+						"winner",
+						"goals"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2012"
+						},
+						{
+							"key": "competition",
+							"value": "Bundesliga"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
